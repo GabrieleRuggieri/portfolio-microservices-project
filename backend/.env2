@@ -1,0 +1,32 @@
+# Database Configuration
+DB_HOST=localhost
+DB_PORT=3306
+DB_USERNAME=root
+DB_PASSWORD=password
+DB_NAME=portfolio_logs
+
+# Elasticsearch Configuration
+ELASTICSEARCH_URL=http://localhost:9200
+ELASTICSEARCH_USERNAME=elastic
+ELASTICSEARCH_PASSWORD=changeme
+LOG_INDEX_NAME=portfolio-logs
+
+# Service Configuration
+PORT=3015
+HOST=0.0.0.0
+NODE_ENV=development
+
+# Authentication
+AUTH_SERVICE_URL=http://auth-service:3001
+TOKEN_ISSUER=portfolio-api
+TOKEN_AUDIENCE=portfolio-client
+
+# Logging
+LOG_LEVEL=info
+
+# Development Flags
+DB_FORCE_SYNC=false
+SEED_DATA=false
+
+# CORS Configuration
+CORS_ORIGIN=*

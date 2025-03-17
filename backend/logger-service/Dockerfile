@@ -15,7 +15,7 @@ RUN npm ci --only=production
 
 # Copy source files
 COPY --chown=node:node src ./src
-COPY --chown=node:node ../shared ../shared
+# COPY --chown=node:node ../shared ../shared
 
 # Switch to non-root user
 USER node

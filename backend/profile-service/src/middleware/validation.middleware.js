@@ -29,8 +29,8 @@ const validateProfile = (req, res, next) => {
     }
 
     // Validate social media handles if provided
-    if (github && github.length > 39) {
-        errors.push('GitHub username cannot exceed 39 characters');
+    if (github && github.length > 20) {
+        errors.push('GitHub username cannot exceed 20 characters');
     }
 
     if (linkedin && linkedin.length > 100) {

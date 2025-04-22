@@ -76,8 +76,8 @@ const validateSkill = (req, res, next) => {
     }
 
     // Validate skill name length
-    if (name && name.length > 50) {
-        errors.push('Skill name cannot exceed 50 characters');
+    if (name && name.length > 20) {
+        errors.push('Skill name cannot exceed 20 characters');
     }
 
     // Validate skill level if provided

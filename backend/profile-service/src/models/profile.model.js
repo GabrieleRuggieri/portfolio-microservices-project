@@ -75,7 +75,7 @@ const Profile = sequelize.define('Profile', {
         defaultValue: true,
         comment: 'Profile visibility status'
     },
-    views: {
+    /*views: {
         type: DataTypes.INTEGER,
         defaultValue: 0,
         comment: 'Number of profile views'
@@ -84,7 +84,7 @@ const Profile = sequelize.define('Profile', {
         type: DataTypes.DATE,
         allowNull: true,
         comment: 'Last time profile was viewed'
-    }
+    }*/
 }, {
     timestamps: true,
     paranoid: true, // Enable soft deletes

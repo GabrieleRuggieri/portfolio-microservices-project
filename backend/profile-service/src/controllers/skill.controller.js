@@ -50,7 +50,7 @@ const addSkill = async (req, res) => {
         const skill = await Skill.create({
             profileId: profile.id,
             name,
-            level: level || 'Intermediate',
+            level: level,
             category: category || 'Other',
             yearsOfExperience: yearsOfExperience || 0
         });

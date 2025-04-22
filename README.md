@@ -103,6 +103,8 @@ portfolio/
 └── docker-compose.yml
 ```
 
+![structure](schema_project_portfolio.png)
+
 ## 🔐 Authentication Flow
 
 1. User submits credentials

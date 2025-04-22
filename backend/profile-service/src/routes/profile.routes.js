@@ -11,6 +11,57 @@ const experienceController = require('../controllers/experience.controller');
 const { authenticate, hasRole } = require('../middleware/auth.middleware');
 const { validateProfile, validateSkill, validateExperience } = require('../middleware/validation.middleware');
 
+// Middleware to enforce admin role globally
+router.use(authenticate); // Ensure all users are authenticated
+router.use(hasRole('admin')); // Ensure all users have the admin role
+
+// Health check endpoint
+router.get('/health', (req, res) => {
+    res.status(200).json({
+        status: 'ok',
+        service: 'profile-service',
+        timestamp: new Date().toISOString()
+    });
+});
+
+// Profile routes
+router.post('/', validateProfile, profileController.createProfile);
+router.get('/me', profileController.getOwnProfile);
+router.get('/:id', profileController.getProfileById);
+router.get('/', profileController.getAllProfiles);
+router.put('/me', validateProfile, profileController.updateProfile);
+router.delete('/me', profileController.deleteProfile);
+
+// Admin profile routes
+router.put('/:id', validateProfile, profileController.updateProfileById);
+router.delete('/:id', profileController.deleteProfileById);
+
+// Skill routes
+router.post('/me/skills', validateSkill, skillController.addSkill);
+router.post('/me/skills/bulk', skillController.bulkAddSkills);
+router.get('/me/skills', skillController.getSkills);
+router.get('/me/skills/:id', skillController.getSkillById);
+router.put('/me/skills/:id', validateSkill, skillController.updateSkill);
+router.delete('/me/skills/:id', skillController.deleteSkill);
+
+// Experience routes
+router.post('/me/experiences', validateExperience, experienceController.addExperience);
+router.post('/me/experiences/bulk', experienceController.bulkAddExperiences);
+router.get('/me/experiences', experienceController.getExperiences);
+router.get('/me/experiences/:id', experienceController.getExperienceById);
+router.put('/me/experiences/:id', validateExperience, experienceController.updateExperience);
+router.delete('/me/experiences/:id', experienceController.deleteExperience);
+
+module.exports = router;
+
+/*const express = require('express');
+const router = express.Router();
+const profileController = require('../controllers/profile.controller');
+const skillController = require('../controllers/skill.controller');
+const experienceController = require('../controllers/experience.controller');
+const { authenticate, hasRole } = require('../middleware/auth.middleware');
+const { validateProfile, validateSkill, validateExperience } = require('../middleware/validation.middleware');
+
 // Health check endpoint
 router.get('/health', (req, res) => {
     res.status(200).json({
@@ -49,3 +100,4 @@ router.put('/me/experiences/:id', authenticate, validateExperience, experienceCo
 router.delete('/me/experiences/:id', authenticate, experienceController.deleteExperience);
 
 module.exports = router;
+*/

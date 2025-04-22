@@ -51,7 +51,7 @@ const addExperience = async (req, res) => {
             endDate: isCurrentPosition ? null : endDate,
             description,
             isCurrentPosition: isCurrentPosition || false,
-            employmentType: employmentType || 'Full-time'
+            employmentType: employmentType
         });
 
         // Publish experience added event
